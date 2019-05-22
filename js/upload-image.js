@@ -6,7 +6,6 @@
 
   let fileChoose = document.querySelector('.img-upload__input');
   let popupEdit = document.querySelector('.img-upload__overlay');
-
   let popupImg = popupEdit.querySelector('img');
 
   let showPopupEdit = function() {
