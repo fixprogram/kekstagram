@@ -57,7 +57,6 @@
   let effectsList = document.querySelector('.effects__list');
   let effects = effectsList.querySelectorAll('.effects__radio');
   let picture = document.querySelector('.img-upload__preview img');
-
   let effectLevelBlock = document.querySelector('.effect-level');
 
   let getEffect = function(id) {
@@ -77,11 +76,9 @@
     }
   }
 
-  let checkboxes = document.querySelectorAll('.effects__radio');
-
-  let getEffectRadio = function(checkboxes) {
+  let getEffectRadio = function(effects) {
     let result;
-    checkboxes.forEach(function(it){
+    effects.forEach(function(it){
       if(it.checked) {
         result = it.id;
         console.log(result);
@@ -105,7 +102,7 @@
   }
 
   window.showEffect = function(level) {
-    let effect = getEffectRadio(checkboxes);
+    let effect = getEffectRadio(effects);
 
     effects.forEach(function(it){
       it.addEventListener('click', function() {
