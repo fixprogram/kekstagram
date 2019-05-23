@@ -2,11 +2,15 @@
 
   "use strict";
 
-  const maxLevel = 453;
+  window.maxLevel = 453;
 
   let effectPin = document.querySelector('.effect-level__pin');
   let effectLevelDepth = document.querySelector('.effect-level__depth');
-  let level = 0;
+  let level = window.maxLevel;
+
+  effectPin.style.left = level + 'px';
+  effectLevelDepth.style.width = level + 'px';
+  //window.showEffect(level);
 
   effectPin.addEventListener('mousedown', function(evt) {
     let positionX = evt.clientX;
@@ -19,8 +23,8 @@
 
       level = (effectPin.offsetLeft - shift);
 
-      if(level > maxLevel) {
-        level = maxLevel;
+      if(level > window.maxLevel) {
+        level = window.maxLevel;
       } else if(level < 0) {
         level = 0;
       }

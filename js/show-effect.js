@@ -52,8 +52,6 @@
     }
   };
 
-  const maxLevel = 453;
-
   let effectsList = document.querySelector('.effects__list');
   let effects = effectsList.querySelectorAll('.effects__radio');
   let picture = document.querySelector('.img-upload__preview img');
@@ -97,7 +95,7 @@
       } else {
         effectLevelBlock.style.display = 'block';
       }
-      let effectLevel = level / maxLevel * effectName.max;
+      let effectLevel = level / window.maxLevel * effectName.max;
       picture.style.filter = effectName.filter + '(' + effectLevel + effectName.points + ')';
   }
 

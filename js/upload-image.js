@@ -26,9 +26,11 @@
 
       reader.readAsDataURL(file);
     }
+    window.showEffect(window.maxLevel);
   };
 
   let btnClosePopup = popupEdit.querySelector('.img-upload__cancel');
+
   let closePopupEdit = function() {
     popupEdit.classList.add('hidden');
   };
@@ -39,6 +41,12 @@
 
   btnClosePopup.addEventListener('click', function() {
     closePopupEdit();
+  });
+
+  window.addEventListener('keydown', function(evt) {
+    if(evt.keyCode === 27) {
+      closePopupEdit();
+    }
   });
 
 })();
