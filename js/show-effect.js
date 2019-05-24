@@ -99,7 +99,7 @@
       picture.style.filter = effectName.filter + '(' + effectLevel + effectName.points + ')';
   }
 
-  window.showEffect = function(level) {
+  window.showEffect = function(level = window.maxLevel) {
     let effect = getEffectRadio(effects);
 
     effects.forEach(function(it){

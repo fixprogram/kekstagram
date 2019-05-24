@@ -8,9 +8,13 @@
   let effectLevelDepth = document.querySelector('.effect-level__depth');
   let level = window.maxLevel;
 
-  effectPin.style.left = level + 'px';
-  effectLevelDepth.style.width = level + 'px';
-  //window.showEffect(level);
+  window.setCoord = function(coord = window.maxLevel) {
+    level = coord;
+    effectPin.style.left = level + 'px';
+    effectLevelDepth.style.width = level + 'px';
+  }
+
+  window.setCoord(level);
 
   effectPin.addEventListener('mousedown', function(evt) {
     let positionX = evt.clientX;
@@ -29,8 +33,7 @@
         level = 0;
       }
 
-      effectPin.style.left = level + 'px';
-      effectLevelDepth.style.width = level + 'px';
+      window.setCoord(level);
       window.showEffect(level);
     };
 
@@ -45,17 +48,11 @@
 
   let effectLevelLine = document.querySelector('.effect-level__line');
 
-  let clickOnLine = function(coord) {
-    level = coord;
-    effectPin.style.left = level + 'px';
-    effectLevelDepth.style.width = level + 'px';
-  }
-
   effectLevelLine.addEventListener('click', function(evt) {
     evt.preventDefault();
     let clickCoord = effectLevelLine.getBoundingClientRect();
-    clickCoord = (evt.clientX - clickCoord.left) / effectLevelLine.offsetWidth * maxLevel;
-    clickOnLine(clickCoord);
+    clickCoord = (evt.clientX - clickCoord.left) / effectLevelLine.offsetWidth * window.maxLevel;
+    window.setCoord(clickCoord);
     window.showEffect(clickCoord);
   });
 

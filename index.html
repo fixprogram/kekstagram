@@ -118,8 +118,8 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <input class="text__hashtags" name="hashtags" placeholder="#хэш-тег">
-                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                  <input class="text__hashtags" name="hashtags" placeholder="#хэш-тег" pattern="#." required>
+                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..." required></textarea>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -222,8 +222,8 @@
       <div class="error__inner">
         <h2 class="error__title">Ошибка загрузки файла</h2>
         <div class="error__buttons">
-          <button type="button" class="error__button">Попробовать снова</button>
-          <button type="button" class="error__button">Загрузить другой файл</button>
+          <button type="button" class="error__button error__button--repeat">Попробовать снова</button>
+          <button type="button" class="error__button error__button--upload-another">Загрузить другой файл</button>
         </div>
       </div>
     </section>
@@ -244,6 +244,7 @@
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
 
+  <script src="js/submit-form.js"></script>
   <script src="js/backend.js"></script>
   <script src="js/upload-image.js"></script>
   <script src="js/show-effect.js"></script>
