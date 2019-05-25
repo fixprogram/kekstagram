@@ -21,7 +21,6 @@
       return fragment;
     };
 
-
     let bigPicture = document.querySelector('.big-picture');
     bigPicture.querySelector('.social__comment-count').classList.add('visually-hidden');
     bigPicture.querySelector('.social__comments-loader').classList.add('visually-hidden');
@@ -60,13 +59,46 @@
       return commentElement;
     };
 
-    let onSuccess = function(data) {
+    let deleteAllPhotos = function() {
+      let pictures = picturesList.querySelectorAll('.picture');
+      pictures.forEach(function(it) {
+        picturesList.removeChild(it);
+      });
+    }
+
+    window.renderPhotos = function(data) {
+      deleteAllPhotos();
       picturesList.appendChild(renderPicture(data));
       let pictures = picturesList.querySelectorAll('.picture');
       pictures.forEach(function(it, i){
         it.addEventListener('click', function(){
           showImage(data[i]);
         });
+      });
+    }
+
+    let onSuccess = function(data) {
+      let adData = data;
+
+      window.renderPhotos(adData);
+
+      let popularBtn = document.querySelector('#filter-popular');
+      let newBtn = document.querySelector('#filter-new');
+      let discussedBtn = document.querySelector('#filter-discussed');
+
+      newBtn.addEventListener('click', function(evt) {
+        window.filterActivate(evt.target);
+        window.getRandomPhotos(adData);
+      });
+
+      popularBtn.addEventListener('click', function(evt) {
+        window.filterActivate(evt.target);
+        window.getPopularPhotos(adData);
+      });
+
+      discussedBtn.addEventListener('click', function(evt) {
+        window.filterActivate(evt.target);
+        window.getDiscussedPhotos(adData);
       });
     }
 
